@@ -2,6 +2,8 @@ import {useState} from "react";
 import TaskCard from "./TaskCard";
 import BoxCard from "./BoxCard";
 import './List.css';
+import AddTask from "./AddTask";
+import moduleStyles from './List.module.css';
 
 export default function List(props) {
     const [tasks, setTasks] = useState([
@@ -28,9 +30,10 @@ export default function List(props) {
 
     return (
         <div className="tasklist">
+            <AddTask />
             <h1 style={styles}>Tasks List {props.title} {props.subtitle}</h1>
-            <button className="trigger" onClick={() => setShowTasks(!showTasks)}>{showTasks ? "Hide" : "Show"}</button>
             <ul>
+                <button className={`trigger ${moduleStyles.trigger}`} onClick={() => setShowTasks(!showTasks)}>{showTasks ? "Hide" : "Show"}</button>
                 { showTasks && tasks.map((task) => (
                     <TaskCard task={task} key={task.id} handleDelete={handleDelete} />
                 ))}
