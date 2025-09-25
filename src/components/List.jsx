@@ -7,9 +7,9 @@ import moduleStyles from './List.module.css';
 
 export default function List(props) {
     const [tasks, setTasks] = useState([
-        {id: 1561, name: "Learning Task 1", completed: true},
-        {id: 1562, name: "Learning Task 2", completed: false},
-        {id: 1563, name: "Learning Task 3", completed: false}
+        // {id: 1561, name: "Learning Task 1", completed: true},
+        // {id: 1562, name: "Learning Task 2", completed: false},
+        // {id: 1563, name: "Learning Task 3", completed: false}
     ]);
 
     function handleDelete(id) {
@@ -30,7 +30,7 @@ export default function List(props) {
 
     return (
         <div className="tasklist">
-            <AddTask />
+            <AddTask tasks={tasks} setTasks={setTasks} />
             <h1 style={styles}>Tasks List {props.title} {props.subtitle}</h1>
             <ul>
                 <button className={`trigger ${moduleStyles.trigger}`} onClick={() => setShowTasks(!showTasks)}>{showTasks ? "Hide" : "Show"}</button>

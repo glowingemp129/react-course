@@ -1,7 +1,7 @@
 import './AddTask.css';
 import {useState} from "react";
 
-export default function AddTask() {
+export default function AddTask({tasks, setTasks}) {
     const [taskName, setTaskName] = useState('');
     const [taskProgress, setTaskProgress] = useState(false);
 
@@ -21,11 +21,14 @@ export default function AddTask() {
             return;
         }
         const newTask = {
-            id: Math.floor(Math.random() * 1000000),
+            id: Math.floor(Math.random() * 1000),
             name: taskName,
             completed: Boolean(taskProgress),
         };
+
+        setTasks([...tasks, newTask]);
         handleReset();
+
         console.log("newTask",newTask);
     }
 
