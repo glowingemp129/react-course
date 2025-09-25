@@ -3,6 +3,7 @@ import {useState} from "react";
 
 export default function AddTask() {
     const [taskName, setTaskName] = useState('');
+    const [taskProgress, setTaskProgress] = useState(false);
 
     const handleChange = (e) => {
         setTaskName(e.target.value);
@@ -10,13 +11,34 @@ export default function AddTask() {
 
     const handleReset = () => {
         setTaskName("");
+        setTaskProgress(false);
     }
+
+    function handleSubmit(e) {
+        e.preventDefault();
+        if (!taskName) {
+            alert("Please enter a task name");
+            return;
+        }
+        const newTask = {
+            id: Math.floor(Math.random() * 1000000),
+            name: taskName,
+            completed: Boolean(taskProgress),
+        };
+        handleReset();
+        console.log("newTask",newTask);
+    }
+
     return (
         <section className="addtask">
             <form>
                 <input onChange={handleChange} type="text" name="title" id="title" placeholder="Please Enter the Task Title" autoComplete="off" value={taskName} />
-                <button type="submit">Add Task</button>
+                <select onChange={(e) => setTaskProgress(e.target.value)}  value={taskProgress}>
+                    <option value="false">Pending</option>
+                    <option value="true">Completed</option>
+                </select>
                 <span className="reset" onClick={handleReset}>Reset</span>
+                <button onClick={handleSubmit} type="submit">Add Task</button>
             </form>
             <p>{taskName}</p>
         </section>
