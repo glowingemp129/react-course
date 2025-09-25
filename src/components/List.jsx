@@ -17,9 +17,17 @@ export default function List(props) {
 
     const [showTasks, setShowTasks] = useState(true);
 
+    const styles = {
+        color: "#2fda93",
+        border: "1px solid #2fda93",
+        borderRadius: "5px",
+        fontSize: "20px",
+        padding: "10px",
+    };
+
     return (
         <div className="tasklist">
-            <h1>Tasks List {props.title} {props.subtitle}</h1>
+            <h1 style={styles}>Tasks List {props.title} {props.subtitle}</h1>
             <button className="trigger" onClick={() => setShowTasks(!showTasks)}>Toggle</button>
             <ul>
                 { showTasks && tasks.map((task) => (
