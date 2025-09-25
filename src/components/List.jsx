@@ -29,7 +29,7 @@ export default function List(props) {
     return (
         <div className="tasklist">
             <h1 style={styles}>Tasks List {props.title} {props.subtitle}</h1>
-            <button className="trigger" onClick={() => setShowTasks(!showTasks)}>Toggle</button>
+            <button className="trigger" onClick={() => setShowTasks(!showTasks)}>{showTasks ? "Hide" : "Show"}</button>
             <ul>
                 { showTasks && tasks.map((task) => (
                     <TaskCard task={task} key={task.id} handleDelete={handleDelete} />
