@@ -18,8 +18,9 @@ export default function List(props) {
     const [showTasks, setShowTasks] = useState(true);
 
     const styles = {
-        color: "#2fda93",
-        border: "1px solid #2fda93",
+        color: showTasks ? "#2fda93" : "#c84d31",
+        border: "1px solid",
+        borderColor: showTasks ? "#2fda93" : "#c84d31",
         borderRadius: "5px",
         fontSize: "20px",
         padding: "10px",
